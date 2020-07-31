@@ -6,4 +6,4 @@ class GuildBankView(TemplateView):
     template_name = "guild_bank/bank.html"
 
     def get_context_data(self, **kwargs):
-        return {}
+        return {'scan': Scan.objects.latest("created")}
