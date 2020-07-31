@@ -1,6 +1,6 @@
 from django.urls import path
-from django.views.generic import TemplateView
+from guild_bank.views import GuildBankView
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name="guild_bank/bank.html")),
+    path('', GuildBankView.as_view()),
 ]
