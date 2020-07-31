@@ -11,7 +11,7 @@ class Character(models.Model):
 
 
 class Scan(models.Model):
-    character = models.ForeignKey(Character, models.CASCADE)
+    character = models.ForeignKey(Character, models.CASCADE, null=True)
     created = models.DateTimeField(auto_now_add=True)
 
 
