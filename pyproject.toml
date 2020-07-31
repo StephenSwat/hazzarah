@@ -9,6 +9,7 @@ license = "MIT"
 python = "^3.6"
 django = "^3.0.8"
 ipython = "^7.16.1"
+django-environ = "^0.4.5"
 
 [tool.poetry.dev-dependencies]
 
