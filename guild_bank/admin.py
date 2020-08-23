@@ -5,24 +5,26 @@ from guild_bank.models import Bank, Character, Item, Scan, ScanItem
 
 @admin.register(Bank)
 class BankAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("name",)
 
 
 @admin.register(Character)
 class CharacterAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("name", "bank")
 
 
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("id", "name")
+
+
+class ScanItemInline(admin.TabularInline):
+    raw_id_fields = ("item",)
+    model = ScanItem
 
 
 @admin.register(Scan)
 class ScanAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("id", "character", "created")
 
-
-@admin.register(ScanItem)
-class ScanItemAdmin(admin.ModelAdmin):
-    pass
+    inlines = [ScanItemInline]
