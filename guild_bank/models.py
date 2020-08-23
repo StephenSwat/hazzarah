@@ -8,9 +8,14 @@ class Bank(models.Model):
         return self.name
 
 
+class ItemCategory(models.Model):
+    name = models.CharField(max_length=60)
+
+
 class Item(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=200)
+    category = models.ForeignKey(ItemCategory, models.SET_NULL, null=True)
 
     def __str__(self):
         return self.name
