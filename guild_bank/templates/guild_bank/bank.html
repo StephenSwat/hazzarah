@@ -2,6 +2,7 @@
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/2.0.3/pure-min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/2.0.3/grids-responsive.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/jquery.dataTables.min.css">
         <script>
         const whTooltips = {
             colorLinks: true,
@@ -15,6 +16,8 @@
         }
         </script>
         <script src="https://wow.zamimg.com/widgets/power.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"></script>
         <style>
             body {
                 color: white;
@@ -31,6 +34,13 @@
                 margin-right: 10px;
             }
         </style>
+        <script>
+            $(document).ready( function () {
+                $('#items').DataTable({
+                    "paging": false
+                });
+            } );
+        </script>
     </head>
     <body>
         <div class="pure-g">
@@ -38,7 +48,7 @@
             <div class="pure-u-3-4 pure-u-lg-1-3">
                 <h1 style="text-align:center; width: 100%;">{{ bank.name }} bank contents</h1>
 
-                <table id="items" class="pure-table" style="width: 100%;">
+                <table class="pure-table" style="width: 100%;">
                     <thead>
                         <tr>
                             <th width="10%">Character</th>
