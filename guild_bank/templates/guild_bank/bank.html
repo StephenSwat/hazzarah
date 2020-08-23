@@ -1,8 +1,9 @@
 <html>
     <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/2.0.3/pure-min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/2.0.3/grids-responsive.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/jquery.dataTables.min.css">
+        <title>{{ bank.name }} guild bank</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap-grid.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.2/darkly/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap4.min.css">
         <script>
         const whTooltips = {
             colorLinks: true,
@@ -18,37 +19,38 @@
         <script src="https://wow.zamimg.com/widgets/power.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <style>
-            body {
-                color: white;
-                background-color: #121212;
-            }
-            table {
-                background-color: #272727;
-                margin-bottom: 20px;
-            }
-            table tr {
-                height: 42px;
-            }
             .iconsmall {
                 margin-right: 10px;
+            }
+            @media (min-width: 1200px) {
+                .container.container-narrow{
+                    max-width: 600px;
+                }
+            }
+            td {
+                height: 52px;
             }
         </style>
         <script>
             $(document).ready( function () {
                 $('#items').DataTable({
-                    "paging": false
+                    "paging": false,
+                    "aaSorting": []
                 });
             } );
         </script>
     </head>
     <body>
-        <div class="pure-g">
-            <div class="pure-u-1-8 pure-u-lg-1-3"></div>
-            <div class="pure-u-3-4 pure-u-lg-1-3">
-                <h1 style="text-align:center; width: 100%;">{{ bank.name }} bank contents</h1>
-
-                <table class="pure-table" style="width: 100%;">
+        <main role="main">
+            <section class="jumbotron text-center">
+                <div class="container">
+                    <h1 style="text-align:center; width: 100%;">{{ bank.name }} guild bank</h1>
+                </div>
+            </section>
+            <div class="container container-narrow">
+                <table class="table table-striped" style="width: 100%;">
                     <thead>
                         <tr>
                             <th width="10%">Character</th>
@@ -65,7 +67,7 @@
                     </tbody>
                 </table>
 
-                <table id="items" class="pure-table" style="width: 100%;">
+                <table id="items" class="table table-striped" style="width: 100%;">
                     <thead>
                         <tr>
                             <th width="10%">Count</th>
@@ -76,9 +78,9 @@
                     <tbody>
                         {% for item in items %}
                             <tr>
-                                <td>{{ item.quantity }}</td>
-                                <td><a href="https://classic.wowhead.com/item={{ item.item.id }}/">{{ item.item.name }}</a></td>
-                                <td>
+                                <td class="align-middle">{{ item.quantity }}</td>
+                                <td class="align-middle"><a href="https://classic.wowhead.com/item={{ item.item.id }}/">{{ item.item.name }}</a></td>
+                                <td class="align-middle">
                                     {% if item.item.category is not None %}
                                         {{ item.item.category.name }}
                                     {% else %}
@@ -89,7 +91,6 @@
                     </tbody>
                 </table>
             </div>
-            <div class="pure-u-1-8 pure-u-lg-1-3"></div>
-        </div>
+        </main>
     </body>
 </html>
