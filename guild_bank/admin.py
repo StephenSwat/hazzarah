@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from guild_bank.models import Bank, Character, Item, Scan, ScanItem
+from guild_bank.models import Bank, Character, Item, Scan, ScanItem, ItemCategory
 
 
 @admin.register(Bank)
@@ -28,3 +28,9 @@ class ScanAdmin(admin.ModelAdmin):
     list_display = ("id", "character", "created")
 
     inlines = [ScanItemInline]
+
+
+@admin.register(ItemCategory)
+class ItemCategoryAdmin(admin.ModelAdmin):
+    list_display = ("name",)
+

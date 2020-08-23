@@ -11,6 +11,9 @@ class Bank(models.Model):
 class ItemCategory(models.Model):
     name = models.CharField(max_length=60)
 
+    class Meta:
+        verbose_name_plural = "item categories"
+
 
 class Item(models.Model):
     id = models.IntegerField(primary_key=True)
