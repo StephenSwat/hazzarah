@@ -20,6 +20,9 @@ class Character(models.Model):
     name = models.CharField(max_length=30, unique=True)
     bank = models.ForeignKey(Bank, models.CASCADE)
 
+    def last_update(self):
+        return self.scan_set.latest('created').created
+
     def __str__(self):
         return self.name
 
