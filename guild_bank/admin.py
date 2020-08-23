@@ -1,6 +1,12 @@
 from django.contrib import admin
 
-from guild_bank.models import Character, Item, Scan, ScanItem
+from guild_bank.models import Bank, Character, Item, Scan, ScanItem
+
+
+@admin.register(Bank)
+class BankAdmin(admin.ModelAdmin):
+    pass
+
 
 @admin.register(Character)
 class CharacterAdmin(admin.ModelAdmin):
