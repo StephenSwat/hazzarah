@@ -1,6 +1,10 @@
 from django.db import models
 
 
+class Bank(models.Model):
+    name = models.CharField(max_length=200, unique=True)
+
+
 class Item(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=200)
