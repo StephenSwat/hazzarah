@@ -12,6 +12,7 @@ class Item(models.Model):
 
 class Character(models.Model):
     name = models.CharField(max_length=30, unique=True)
+    bank = models.ForeignKey(Bank, models.CASCADE)
 
 
 class Scan(models.Model):
