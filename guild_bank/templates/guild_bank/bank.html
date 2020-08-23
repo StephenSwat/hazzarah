@@ -59,7 +59,8 @@
                     <thead>
                         <tr>
                             <th width="10%">Count</th>
-                            <th width="90%">Item</th>
+                            <th width="70%">Item</th>
+                            <th width="20%">Category</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,6 +68,12 @@
                             <tr>
                                 <td>{{ item.quantity }}</td>
                                 <td><a href="https://classic.wowhead.com/item={{ item.item.id }}/">{{ item.item.name }}</a></td>
+                                <td>
+                                    {% if item.item.category is not None %}
+                                        {{ item.item.category.name }}
+                                    {% else %}
+                                        Uncategorized
+                                    {% endif %}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
