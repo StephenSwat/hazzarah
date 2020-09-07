@@ -1,5 +1,6 @@
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.db import transaction
 
 from guild_bank.models import Bank, Scan, ScanItem
@@ -20,10 +21,13 @@ class GuildBankView(TemplateView):
         }
 
 
-class BankUpdateView(FormView):
+class BankUpdateView(UserPassesTestMixin, FormView):
     template_name = 'guild_bank/update.html'
     form_class = BankUpdateForm
     success_url = '/bank/'
+
+    def test_func(self):
+        return self.request.user.is_superuser
 
     def form_valid(self, form):
         with transaction.atomic():
