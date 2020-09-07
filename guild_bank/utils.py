@@ -26,7 +26,7 @@ def decode_cgb_string(b64):
         item_id, quantity = parse_item(x)
         items[item_id] += quantity
 
-    return items
+    return dict(items)
 
 
 @transaction.atomic
