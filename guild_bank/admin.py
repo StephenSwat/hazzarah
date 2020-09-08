@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from guild_bank.models import Bank, Character, Item, Scan, ScanItem, ItemCategory
+from guild_bank.models import Bank, Character, Item, Scan, ScanItem, ItemCategory, Webhook
 
 
 @admin.register(Bank)
@@ -34,3 +34,7 @@ class ScanAdmin(admin.ModelAdmin):
 class ItemCategoryAdmin(admin.ModelAdmin):
     list_display = ("name",)
 
+
+@admin.register(Webhook)
+class WebhookAdmin(admin.ModelAdmin):
+    pass

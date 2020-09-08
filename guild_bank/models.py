@@ -47,3 +47,9 @@ class ScanItem(models.Model):
 
     class Meta:
         unique_together = ('scan', 'item',)
+
+
+class Webhook(models.Model):
+    bank = models.ForeignKey(Bank, models.CASCADE)
+    channel = models.IntegerField()
+    key = models.CharField(max_length=128)
