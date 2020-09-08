@@ -27,13 +27,3 @@ def decode_cgb_string(b64):
         items[item_id] += quantity
 
     return dict(items)
-
-
-@transaction.atomic
-def scan_from_cgb(b64):
-    items = decode_cgb_string(b64)
-
-    scan = Scan.objects.create()
-
-    for item, count in items.items():
-        ScanItem.objects.create(scan=scan, item_id=item, quantity=count)
