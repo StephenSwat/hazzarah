@@ -70,8 +70,9 @@
                 <table id="items" class="table table-striped" style="width: 100%;">
                     <thead>
                         <tr>
-                            <th width="10%">Count</th>
-                            <th width="70%">Item</th>
+                            <th width="10%">N</th>
+                            <th width="50%">Item</th>
+                            <th width="20%">Character</th>
                             <th width="20%">Category</th>
                         </tr>
                     </thead>
@@ -80,6 +81,7 @@
                             <tr>
                                 <td class="align-middle">{{ item.quantity }}</td>
                                 <td class="align-middle"><a href="https://classic.wowhead.com/item={{ item.item.id }}/">{{ item.item.name }}</a></td>
+                                <td class="align-middle">{{ item.scan.character.name }}</td>
                                 <td class="align-middle">
                                     {% if item.item.category is not None %}
                                         {{ item.item.category.name }}
