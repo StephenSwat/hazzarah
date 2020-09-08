@@ -1,0 +1,8 @@
+{% load static %}
+{% load money %}
+
+<span>
+{{ balance|gold }} <img src="{% static 'guild_bank/mgold.png' %}">
+{{ balance|silver }} <img src="{% static 'guild_bank/msilver.png' %}">
+{{ balance|copper }} <img src="{% static 'guild_bank/mcopper.png' %}">
+</span>

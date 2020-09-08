@@ -54,14 +54,16 @@
                     <thead>
                         <tr>
                             <th width="10%">Character</th>
-                            <th width="90%">Last updated</th>
+                            <th width="50%">Last updated</th>
+                            <th width="40%">Money</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for char in bank.character_set.all %}
                             <tr>
-                                <td>{{ char.name }}</td>
-                                <td>{{ char.last_update }}</td>
+                                <td class="align-middle">{{ char.name }}</td>
+                                <td class="align-middle">{{ char.last_update }}</td>
+                                <td class="align-middle">{% include "guild_bank/money.html" with balance=char.last_scan.money %}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
