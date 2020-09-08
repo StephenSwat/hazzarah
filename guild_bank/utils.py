@@ -16,7 +16,8 @@ def parse_item(item):
 def decode_cgb_string(b64):
     dec = base64.b64decode(b64).decode("ASCII")
 
-    _, _, *items_raw = dec.split(";")
+    raw_money, _, *items_raw = dec.split(";")
+    money = int(raw_money.split(",")[1])
     items = collections.defaultdict(int)
 
     for x in items_raw:
@@ -26,4 +27,4 @@ def decode_cgb_string(b64):
         item_id, quantity = parse_item(x)
         items[item_id] += quantity
 
-    return dict(items)
+    return money, dict(items)

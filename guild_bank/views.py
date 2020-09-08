@@ -30,10 +30,15 @@ class BankUpdateView(UserPassesTestMixin, FormView):
         return self.request.user.is_superuser
 
     def form_valid(self, form):
-        with transaction.atomic():
-            scan = Scan.objects.create(character=form.cleaned_data['character'])
+        money, items = form.cleaned_data['encoded']
 
-            for item, count in form.cleaned_data['encoded'].items():
+        with transaction.atomic():
+            scan = Scan.objects.create(
+                character=form.cleaned_data['character'],
+                money=money
+            )
+
+            for item, count in items.items():
                 ScanItem.objects.create(scan=scan, item_id=item, quantity=count)
 
         return super().form_valid(form)

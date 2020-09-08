@@ -28,8 +28,11 @@ class Character(models.Model):
     name = models.CharField(max_length=30, unique=True)
     bank = models.ForeignKey(Bank, models.CASCADE)
 
+    def last_scan(self):
+        return self.scan_set.latest('created')
+
     def last_update(self):
-        return self.scan_set.latest('created').created
+        return self.last_scan().created
 
     def __str__(self):
         return self.name
@@ -38,6 +41,7 @@ class Character(models.Model):
 class Scan(models.Model):
     character = models.ForeignKey(Character, models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
+    money = models.IntegerField(default=0)
 
 
 class ScanItem(models.Model):
